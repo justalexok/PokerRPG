@@ -9,6 +9,8 @@
 class UInputMappingContext;
 class UInputAction;
 struct FInputActionValue;
+class IHighlightInterface;
+
 /**
  * 
  */
@@ -18,6 +20,7 @@ class POKER_API AHeroPlayerController : public APlayerController
 	GENERATED_BODY()
 public:
 	AHeroPlayerController();
+	virtual void PlayerTick(float DeltaTime) override;
 	
 protected:
 	virtual void BeginPlay() override;
@@ -31,4 +34,8 @@ private:
 	TObjectPtr<UInputAction> MoveAction;
 
 	void Move(const FInputActionValue& InputActionValue);
+
+	void CursorTrace();
+	IHighlightInterface* LastActor;
+	IHighlightInterface* ThisActor;
 };

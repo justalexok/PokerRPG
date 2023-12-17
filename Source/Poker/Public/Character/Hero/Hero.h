@@ -30,5 +30,5 @@ protected:
 	float TargetArmLength = 750.f;
 
 	UPROPERTY(EditDefaultsOnly)
-	float SpringArmAngle = -45.f;
+	float SpringArmAngle = -20.f;
 };

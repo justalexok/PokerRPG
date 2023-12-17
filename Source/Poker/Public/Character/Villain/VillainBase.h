@@ -9,9 +9,16 @@
 /**
  * 
  */
+
+
 UCLASS()
 class POKER_API AVillainBase : public ACharacterBase
 {
 	GENERATED_BODY()
+public:
+	AVillainBase();
+
+protected:
+
 	
 };

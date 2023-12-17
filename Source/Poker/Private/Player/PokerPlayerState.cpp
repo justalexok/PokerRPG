@@ -1,14 +1,24 @@
 // Copyright Alex Goulder
 
 
-#include "Character/Villain/VillainBase.h"
+#include "Player/PokerPlayerState.h"
 #include "AbilitySystem/PokerAbilitySystemComponent.h"
 #include "AbilitySystem/PokerAttributeSet.h"
 
-AVillainBase::AVillainBase()
+APokerPlayerState::APokerPlayerState()
 {
 	AbilitySystemComponent = CreateDefaultSubobject<UPokerAbilitySystemComponent>("AbilitySystemComponent");
 	AbilitySystemComponent->SetIsReplicated(true);
 
 	AttributeSet = CreateDefaultSubobject<UPokerAttributeSet>("AttributeSet");
+	NetUpdateFrequency = 100.f;
+
+	
 }
+
+UAbilitySystemComponent* APokerPlayerState::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
+}
+
+

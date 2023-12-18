@@ -19,6 +19,10 @@ class POKER_API AHero : public ACharacterBase
 public:
 	AHero();
 
+	virtual void PossessedBy(AController* NewController) override;
+	virtual void OnRep_PlayerState() override;
+private:
+	void InitAbilityActorInfo();
 protected:
 	UPROPERTY(EditDefaultsOnly)
 	USpringArmComponent* SpringArm;

@@ -3,6 +3,9 @@
 
 #include "Character/Hero/Hero.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Player/PokerPlayerState.h"
+#include "AbilitySystemComponent.h"
+
 
 AHero::AHero()
 {
@@ -25,4 +28,34 @@ AHero::AHero()
 	bUseControllerRotationRoll = false;
 	bUseControllerRotationYaw = false;
 
+	if (APokerPlayerState* PS = Cast<APokerPlayerState>(GetPlayerState()))
+	{
+		AbilitySystemComponent = PS->GetAbilitySystemComponent();
+		AttributeSet = PS->GetAttributeSet();
+	}
+}
+
+void AHero::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	// Init ability actor info for the Server
+	InitAbilityActorInfo();
+}
+
+void AHero::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+
+	// Init ability actor info for the Client
+	InitAbilityActorInfo();
+}
+
+void AHero::InitAbilityActorInfo()
+{
+	APokerPlayerState* PokerPlayerState = GetPlayerState<APokerPlayerState>();
+	check(PokerPlayerState);
+	PokerPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(PokerPlayerState, this);
+	AbilitySystemComponent = PokerPlayerState->GetAbilitySystemComponent();
+	AttributeSet = PokerPlayerState->GetAttributeSet();
 }

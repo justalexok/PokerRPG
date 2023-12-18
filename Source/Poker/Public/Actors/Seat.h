@@ -5,16 +5,15 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Interaction/HighlightInterface.h"
-#include "Table.generated.h"
+#include "Seat.generated.h"
 
 UCLASS()
-class POKER_API ATable : public AActor, public IHighlightInterface
+class POKER_API ASeat : public AActor, public IHighlightInterface
 {
 	GENERATED_BODY()
 	
 public:	
-
-	ATable();
+	ASeat();
 
 	UPROPERTY(EditAnywhere)
 	UStaticMeshComponent* RootMesh;
@@ -25,5 +24,7 @@ protected:
 	virtual void HighlightActor() override;
 	virtual void UnHighlightActor() override;
 	
-};
+	UPROPERTY(BlueprintReadOnly)
+	bool bHighlighted = false;
 
+};

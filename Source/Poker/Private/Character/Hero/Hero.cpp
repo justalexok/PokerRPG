@@ -5,6 +5,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Player/PokerPlayerState.h"
 #include "AbilitySystemComponent.h"
+#include "AbilitySystem/PokerAbilitySystemComponent.h"
 #include "Player/HeroPlayerController.h"
 #include "UI/HUD/PokerHUD.h"
 
@@ -59,6 +60,7 @@ void AHero::InitAbilityActorInfo()
 	check(PokerPlayerState);
 	PokerPlayerState->GetAbilitySystemComponent()->InitAbilityActorInfo(PokerPlayerState, this);
 	AbilitySystemComponent = PokerPlayerState->GetAbilitySystemComponent();
+	Cast<UPokerAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
 	AttributeSet = PokerPlayerState->GetAttributeSet();
 
 	if (AHeroPlayerController* HeroPC = Cast<AHeroPlayerController>(GetController()))

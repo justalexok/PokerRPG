@@ -17,5 +17,12 @@ AVillainBase::AVillainBase()
 void AVillainBase::BeginPlay()
 {
 	Super::BeginPlay();
+	InitAbilityActorInfo();
+}
+
+void AVillainBase::InitAbilityActorInfo()
+{
 	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+	Cast<UPokerAbilitySystemComponent>(AbilitySystemComponent)->AbilityActorInfoSet();
+
 }

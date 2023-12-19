@@ -10,3 +10,11 @@ void UPokerWidgetController::SetWidgetControllerParams(const FWidgetControllerPa
 	AbilitySystemComponent = WCParams.AbilitySystemComponent;
 	AttributeSet = WCParams.AttributeSet;
 }
+
+void UPokerWidgetController::BroadcastInitialValues()
+{
+}
+
+void UPokerWidgetController::BindCallbacksToDependencies()
+{
+}

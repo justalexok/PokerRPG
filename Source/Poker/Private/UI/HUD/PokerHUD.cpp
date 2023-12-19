@@ -12,6 +12,7 @@ UOverlayWidgetController* APokerHUD::GetOverlayWidgetController(const FWidgetCon
 	{
 		OverlayWidgetController = NewObject<UOverlayWidgetController>(this, OverlayWidgetControllerClass);
 		OverlayWidgetController->SetWidgetControllerParams(WCParams);
+		OverlayWidgetController->BindCallbacksToDependencies();
 
 		return OverlayWidgetController;
 	}
@@ -31,8 +32,9 @@ void APokerHUD::InitOverlay(APlayerController* PC, APlayerState* PS, UAbilitySys
 	UOverlayWidgetController* WidgetController = GetOverlayWidgetController(WidgetControllerParams);
 
 	OverlayWidget->SetWidgetController(WidgetController);
-
 	
+	WidgetController->BroadcastInitialValues();
+
 	Widget->AddToViewport();
 }
 

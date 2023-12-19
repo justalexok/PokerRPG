@@ -14,6 +14,11 @@ AVillainBase::AVillainBase()
 	AttributeSet = CreateDefaultSubobject<UPokerAttributeSet>("AttributeSet");
 }
 
+int32 AVillainBase::GetLevel()
+{
+	return Level;
+}
+
 void AVillainBase::BeginPlay()
 {
 	Super::BeginPlay();

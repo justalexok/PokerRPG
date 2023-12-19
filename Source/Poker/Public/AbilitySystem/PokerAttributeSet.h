@@ -70,12 +70,48 @@ public:
 	FGameplayAttributeData Coins;
 	ATTRIBUTE_ACCESSORS(UPokerAttributeSet, Coins);
 
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Skill, Category = "Primary Attributes")
+	FGameplayAttributeData Skill;
+	ATTRIBUTE_ACCESSORS(UPokerAttributeSet, Skill);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Reputation, Category = "Primary Attributes")
+	FGameplayAttributeData Reputation;
+	ATTRIBUTE_ACCESSORS(UPokerAttributeSet, Reputation);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Popularity, Category = "Primary Attributes")
+	FGameplayAttributeData Popularity;
+	ATTRIBUTE_ACCESSORS(UPokerAttributeSet, Popularity);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_Style, Category = "Primary Attributes")
+	FGameplayAttributeData Style;
+	ATTRIBUTE_ACCESSORS(UPokerAttributeSet, Style);
+
+	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_OneTime, Category = "Primary Attributes")
+	FGameplayAttributeData OneTime;
+	ATTRIBUTE_ACCESSORS(UPokerAttributeSet, OneTime);
+
 	UFUNCTION()
 	void OnRep_Bankroll(const FGameplayAttributeData& OldBankroll) const;
 
 	UFUNCTION()
 	void OnRep_Coins(const FGameplayAttributeData& OldCoins) const;
 
+	UFUNCTION()
+	void OnRep_Skill(const FGameplayAttributeData& OldSkill) const;
+
+	UFUNCTION()
+	void OnRep_Reputation(const FGameplayAttributeData& OldReputation) const;
+
+	UFUNCTION()
+	void OnRep_Style(const FGameplayAttributeData& OldStyle) const;
+
+	UFUNCTION()
+	void OnRep_Popularity(const FGameplayAttributeData& OldPopularity) const;
+
+	UFUNCTION()
+	void OnRep_OneTime(const FGameplayAttributeData& OldOneTime) const;
+
+	
 private:
 
 	void SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const;

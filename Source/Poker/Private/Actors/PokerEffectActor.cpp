@@ -30,5 +30,7 @@ void APokerEffectActor::ApplyEffectToTarget(AActor* Target, TSubclassOf<UGamepla
 	EffectContextHandle.AddSourceObject(this);
 	const FGameplayEffectSpecHandle EffectSpecHandle = TargetASC->MakeOutgoingSpec(GameplayEffectClass, 1.f, EffectContextHandle);
 	TargetASC->ApplyGameplayEffectSpecToSelf(*EffectSpecHandle.Data.Get());
+
+	
 }
 

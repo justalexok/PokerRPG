@@ -5,12 +5,14 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemInterface.h"
 #include "GameFramework/Character.h"
+#include "Interaction/PlayerInterface.h"
 #include "CharacterBase.generated.h"
 class UAbilitySystemComponent;
 class UAttributeSet;
+class UGameplayEffect;
 
 UCLASS(Abstract)
-class POKER_API ACharacterBase : public ACharacter, public IAbilitySystemInterface
+class POKER_API ACharacterBase : public ACharacter, public IAbilitySystemInterface, public IPlayerInterface
 {
 	GENERATED_BODY()
 
@@ -29,5 +31,11 @@ protected:
 	TObjectPtr<UAttributeSet> AttributeSet;
 
 	virtual void InitAbilityActorInfo();
+	
+	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Attributes")
+	TSubclassOf<UGameplayEffect> DefaultPrimaryAttributes;
+
+	void InitializePrimaryAttributes() const;
+	
 
 };

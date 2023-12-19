@@ -54,6 +54,13 @@ void AHero::OnRep_PlayerState()
 	InitAbilityActorInfo();
 }
 
+int32 AHero::GetLevel()
+{
+	APokerPlayerState* PokerPlayerState = GetPlayerState<APokerPlayerState>();
+	check(PokerPlayerState);
+	return PokerPlayerState->GetLevel();
+}
+
 void AHero::InitAbilityActorInfo()
 {
 	APokerPlayerState* PokerPlayerState = GetPlayerState<APokerPlayerState>();
@@ -71,5 +78,5 @@ void AHero::InitAbilityActorInfo()
 		}
 		
 	}
-	
+	InitializePrimaryAttributes();
 }

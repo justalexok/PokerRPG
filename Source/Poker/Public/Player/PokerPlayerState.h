@@ -18,9 +18,13 @@ class POKER_API APokerPlayerState : public APlayerState, public IAbilitySystemIn
 
 public:
 	APokerPlayerState();
+
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 	
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 	UAttributeSet* GetAttributeSet() const { return AttributeSet; }
+
+	int32 GetLevel() const { return Level; }
 protected:
 
 	UPROPERTY()
@@ -28,4 +32,15 @@ protected:
 
 	UPROPERTY()
 	TObjectPtr<UAttributeSet> AttributeSet;
+	
+	UPROPERTY(VisibleAnywhere, ReplicatedUsing= OnRep_Level)
+	int32 Level = 1;
+
+	UFUNCTION()
+	void OnRep_Level(int32 OldLevel);
+
+
 };
+
+
+

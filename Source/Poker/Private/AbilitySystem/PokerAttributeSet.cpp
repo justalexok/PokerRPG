@@ -21,6 +21,12 @@ void UPokerAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& O
 
 	DOREPLIFETIME_CONDITION_NOTIFY(UPokerAttributeSet, Bankroll, COND_None, REPNOTIFY_Always);
 	DOREPLIFETIME_CONDITION_NOTIFY(UPokerAttributeSet, Coins, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UPokerAttributeSet, Skill, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UPokerAttributeSet, Reputation, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UPokerAttributeSet, Popularity, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UPokerAttributeSet, Style, COND_None, REPNOTIFY_Always);
+	DOREPLIFETIME_CONDITION_NOTIFY(UPokerAttributeSet, OneTime, COND_None, REPNOTIFY_Always);
+
 }
 
 void UPokerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
@@ -30,17 +36,6 @@ void UPokerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallb
 	FEffectProperties Props;
 	SetEffectProperties(Data, Props);
 	
-}
-
-void UPokerAttributeSet::OnRep_Bankroll(const FGameplayAttributeData& OldBankroll) const
-{
-	GAMEPLAYATTRIBUTE_REPNOTIFY(UPokerAttributeSet, Bankroll, OldBankroll);
-}
-
-void UPokerAttributeSet::OnRep_Coins(const FGameplayAttributeData& OldCoins) const
-{
-	GAMEPLAYATTRIBUTE_REPNOTIFY(UPokerAttributeSet, Coins, OldCoins);
-
 }
 
 void UPokerAttributeSet::SetEffectProperties(const FGameplayEffectModCallbackData& Data, FEffectProperties& Props) const
@@ -76,3 +71,45 @@ void UPokerAttributeSet::SetEffectProperties(const FGameplayEffectModCallbackDat
 	}
 	
 }
+
+void UPokerAttributeSet::OnRep_Bankroll(const FGameplayAttributeData& OldBankroll) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UPokerAttributeSet, Bankroll, OldBankroll);
+}
+
+void UPokerAttributeSet::OnRep_Coins(const FGameplayAttributeData& OldCoins) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UPokerAttributeSet, Coins, OldCoins);
+
+}
+
+void UPokerAttributeSet::OnRep_Skill(const FGameplayAttributeData& OldSkill) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UPokerAttributeSet, Coins, OldSkill);
+
+}
+
+void UPokerAttributeSet::OnRep_Reputation(const FGameplayAttributeData& OldReputation) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UPokerAttributeSet, Coins, OldReputation);
+
+}
+
+void UPokerAttributeSet::OnRep_Style(const FGameplayAttributeData& OldStyle) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UPokerAttributeSet, Coins, OldStyle);
+
+}
+
+void UPokerAttributeSet::OnRep_Popularity(const FGameplayAttributeData& OldPopularity) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UPokerAttributeSet, Coins, OldPopularity);
+
+}
+
+void UPokerAttributeSet::OnRep_OneTime(const FGameplayAttributeData& OldOneTime) const
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UPokerAttributeSet, Coins, OldOneTime);
+
+}
+

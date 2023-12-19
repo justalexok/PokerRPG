@@ -19,10 +19,18 @@ void UOverlayWidgetController::BindCallbacksToDependencies()
 	const UPokerAttributeSet* PokerAttributeSet = CastChecked<UPokerAttributeSet>(AttributeSet);
 
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(
-		PokerAttributeSet->GetBankrollAttribute()).AddUObject(this, &UOverlayWidgetController::BankrollChanged);
+		PokerAttributeSet->GetBankrollAttribute()).AddLambda(
+			[this] (const FOnAttributeChangeData& Data)
+			{
+				OnBankrollChanged.Broadcast(Data.NewValue);
+			});
 
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(
-		PokerAttributeSet->GetCoinsAttribute()).AddUObject(this, &UOverlayWidgetController::CoinsChanged);
+	PokerAttributeSet->GetCoinsAttribute()).AddLambda(
+		[this] (const FOnAttributeChangeData& Data)
+		{
+			OnCoinsChanged.Broadcast(Data.NewValue);
+		});
 
 	Cast<UPokerAbilitySystemComponent>(AbilitySystemComponent)->EffectAssetTags.AddLambda(
 		[this](const FGameplayTagContainer& AssetTags)
